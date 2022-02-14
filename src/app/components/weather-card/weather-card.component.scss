@@ -1,0 +1,58 @@
+$weather-status-font-size: .9rem;
+$column-flex-gap: .5rem;
+//$weather-status-fs: ;
+//
+
+.container {
+  border-radius: 15px;
+  border: 1px solid black;
+  padding: .8rem;
+  display: flex;
+  flex-direction: row;
+  max-width: 350px;
+  width: available;
+  min-width: 250px;
+  justify-content: space-between;
+}
+
+.degree-status-container {
+  display: flex;
+  flex-direction: column;
+  gap: $column-flex-gap;
+
+  .degree {
+    font-size: 2rem;
+    line-height: 2rem;
+  }
+
+  .status {
+    font-size: $weather-status-font-size;
+    line-height: $weather-status-font-size;
+  }
+}
+
+
+
+.datetime-location-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: $column-flex-gap;
+
+  .datetime {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+
+    .time {
+      font-size: $weather-status-font-size;
+      line-height: $weather-status-font-size;
+    }
+
+    .date {
+      font-size: .7rem;
+      line-height: .7rem;
+    }
+  }
+}
