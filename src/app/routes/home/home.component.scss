@@ -1,0 +1,17 @@
+.divider {
+  position: absolute;
+  width: 2rem;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  background: #DCEEFF;
+}
+
+div {
+  width: 100%;
+}
+:host {
+  width: 100%;
+  padding-left: 8%;
+  padding-right: 14%;
+}

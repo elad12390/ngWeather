@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {CurrentWeatherDataResponse} from '../models/openweathermap.models';
+import {Observable} from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class OpenWeatherMapApiService {
@@ -9,8 +11,8 @@ export class OpenWeatherMapApiService {
     console.log('mewo');
   }
 
-  getCityList() {
-    // return this.httpClient.get();
+  getCityList(city: string): Observable<CurrentWeatherDataResponse> {
+    return this.httpClient.get<CurrentWeatherDataResponse>('weather', { params: { q: city }});
   }
 
 
