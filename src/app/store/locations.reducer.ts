@@ -7,7 +7,9 @@ export const locationsInitialState = [] as WeatherCardData[];
 const _locationsReducer = createReducer(
   locationsInitialState,
   on(addCity, (state, cityPayload) => {
-    state.push(cityPayload);
+    if (!state.map(c => c.id).includes(cityPayload.id)) {
+      state.push(cityPayload);
+    }
     return state;
   }),
   on(deleteCity, (state, idPayload) => {

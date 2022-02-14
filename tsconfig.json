@@ -12,10 +12,13 @@
     },
     {
       "path": "./tsconfig.spec.json"
-    }
+    },
 ],
   "compilerOptions": {
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
   }
 }

@@ -1,0 +1,18 @@
+<form class="example-form" [formGroup]="formGroup">
+  <mat-form-field class="example-full-width" appearance="outline">
+    <mat-icon matPrefix>search</mat-icon>
+    <mat-label>City</mat-label>
+    <input type="text"
+           placeholder="Search for a city"
+           aria-label="Number"
+           matInput
+           formControlName="searchText"
+           [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option.name" (onSelectionChange)="onCitySelection(option)">
+        {{option.name}}
+      </mat-option>
+    </mat-autocomplete>
+    <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+  </mat-form-field>
+</form>

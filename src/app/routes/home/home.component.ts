@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {IWeatherAPICity} from '../../models/openweathermap.models';
 
 @Component({
   selector: 'app-home',
@@ -12,4 +13,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  selectedCity($event: IWeatherAPICity) {
+
+  }
 }

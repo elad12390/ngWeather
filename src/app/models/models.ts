@@ -1,5 +1,5 @@
 import {EWeatherStatus} from './enums';
-import {CurrentWeatherDataResponse, OpenWeatherMapWeather} from './openweathermap.models';
+import {ICurrentWeatherDataResponse, OpenWeatherMapWeather} from './openweathermap.models';
 import {kelvinToCelsius, unixSecondsToDate} from '../utils/utils';
 
 export class WeatherStatus {
@@ -10,7 +10,7 @@ export class WeatherStatus {
 
   private _code: number;
   get code(): number {
-    return this.code;
+    return this._code;
   }
 
   statusText: string;
@@ -57,7 +57,7 @@ export class WeatherCardData {
   date?: Date;
   location?: string;
 
-  constructor(response: CurrentWeatherDataResponse) {
+  constructor(response: ICurrentWeatherDataResponse) {
     this.id = response.id;
     this.status = new WeatherStatus(response.weather[0]);
     this.degree = kelvinToCelsius(response.main.temp);

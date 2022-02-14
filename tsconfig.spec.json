@@ -6,7 +6,10 @@
     "types": [
       "jasmine"
     ],
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   },
   "files": [
     "src/test.ts",

@@ -28,7 +28,7 @@ export interface OpenWeatherMapClouds {
   all: number;
 }
 
-export interface OpenWeatherMapSys {
+export interface IOpenWeatherMapSys {
   type: number;
   id: number;
   message: number;
@@ -37,7 +37,7 @@ export interface OpenWeatherMapSys {
   sunset: number;
 }
 
-export interface CurrentWeatherDataResponse {
+export interface ICurrentWeatherDataResponse {
   coord: OpenWeatherMapCoord;
   weather: OpenWeatherMapWeather[];
   base: string;
@@ -46,9 +46,20 @@ export interface CurrentWeatherDataResponse {
   wind: OpenWeatherMapWind;
   clouds: OpenWeatherMapClouds;
   dt: number;
-  sys: OpenWeatherMapSys;
+  sys: IOpenWeatherMapSys;
   timezone: number;
   id: number;
   name: string;
   cod: number;
+}
+
+export interface IWeatherAPICity {
+  id: number;
+  name: string;
+  state: string;
+  country: string;
+  coord: {
+    lon: number;
+    lat: number;
+  };
 }
