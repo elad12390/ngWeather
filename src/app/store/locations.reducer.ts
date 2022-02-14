@@ -1,5 +1,5 @@
 import {createReducer, on} from '@ngrx/store';
-import {addCity, deleteCity, findCity, refreshCity, updateCity} from './locations.actions';
+import {addCity, deleteCity, updateCity} from './locations.actions';
 import {WeatherCardData} from '../models/models';
 
 export const locationsInitialState = [] as WeatherCardData[];

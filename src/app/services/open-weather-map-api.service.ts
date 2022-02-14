@@ -10,7 +10,7 @@ export class OpenWeatherMapApiService {
   }
 
   getCityList() {
-    return this.httpClient.get();
+    // return this.httpClient.get();
   }
 
 
