@@ -3,7 +3,8 @@ import {Store} from '@ngrx/store';
 import {map} from 'rxjs/operators';
 import {ApplicationStore} from '../../store/store';
 import {WeatherCardData} from '../../models/models';
-import {deleteCity, refreshCity, updateCity} from '../../store/locations.actions';
+import {deleteCity, refreshCity, updateCity} from '../../store/locations/locations.actions';
+import {showCity} from '../../store/cities/cities.actions';
 
 @Component({
   selector: 'app-cards-container',
@@ -20,6 +21,7 @@ export class CardsContainerComponent implements OnInit {
 
   deleteCard(card: WeatherCardData): void {
     this.store.dispatch(deleteCity({id: card.id}));
+    this.store.dispatch(showCity({id: card.id}));
   }
 
   updateCard(card: WeatherCardData): void {

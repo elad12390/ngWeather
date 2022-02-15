@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
-import {OpenWeatherMapApiService} from '../services/open-weather-map-api.service';
+import {OpenWeatherMapApiService} from '../../services/open-weather-map-api.service';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {addCity, findAndAddCity, getGeoLocationCity, refreshCity, updateCity} from './locations.actions';
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {EMPTY, from, Observable} from 'rxjs';
-import {getGeolocation} from '../utils/utils';
+import {getGeolocation} from '../../utils/utils';
+import {hideCity} from '../cities/cities.actions';
 
 @Injectable()
 export class LocationsEffects {
@@ -26,7 +27,10 @@ export class LocationsEffects {
     ofType(getGeoLocationCity),
     switchMap(() => from(getGeolocation) as Observable<Position>),
     switchMap((loc) => this.service.getCityWeatherByLatLong(loc.coords.latitude, loc.coords.longitude)),
-    map((data) => addCity(data))
+    map((data) => {
+      hideCity({id: data.id});
+      return addCity(data);
+    })
   ));
 
   constructor(private action$: Actions, private service: OpenWeatherMapApiService) {

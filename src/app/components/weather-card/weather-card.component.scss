@@ -101,3 +101,11 @@ $hover-scale: 1.05;
   justify-content: center;
   align-items: start;
 }
+
+
+/* For mobile phones: */
+@media only screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
+}

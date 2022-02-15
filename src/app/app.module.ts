@@ -20,10 +20,11 @@ import {APIInterceptor} from './interceptors/api-interceptor.service';
 import {MockInterceptor} from './interceptors/mock-interceptor.service';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../environments/environment';
-import {locationsReducer} from './store/locations.reducer';
+import {locationsReducer} from './store/locations/locations.reducer';
 import {EffectsModule} from '@ngrx/effects';
-import {LocationsEffects} from './store/locations.effects';
+import {LocationsEffects} from './store/locations/locations.effects';
 import {MatButtonModule} from '@angular/material/button';
+import {citiesInitialState, citiesReducer} from './store/cities/cities.reducer';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import {MatButtonModule} from '@angular/material/button';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({locations: locationsReducer}, {}),
+    StoreModule.forRoot({locations: locationsReducer, cities: citiesReducer}, {}),
     EffectsModule.forRoot([LocationsEffects]),
     StoreDevtoolsModule.instrument({
       name: 'Weather App',

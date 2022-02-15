@@ -1,5 +1,5 @@
 import {createAction, props} from '@ngrx/store';
-import {WeatherCardData} from '../models/models';
+import {WeatherCardData} from '../../models/models';
 
 export const addCity = createAction('[Weather Locations] Add', props<WeatherCardData>());
 export const findAndAddCity = createAction('[Weather Locations] Find And Add', props<{name: string}>());

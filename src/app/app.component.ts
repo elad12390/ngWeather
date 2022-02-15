@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ApplicationStore} from './store/store';
 import {Store} from '@ngrx/store';
-import {getGeoLocationCity} from './store/locations.actions';
+import {getGeoLocationCity} from './store/locations/locations.actions';
 
 @Component({
   selector: 'app-root',
