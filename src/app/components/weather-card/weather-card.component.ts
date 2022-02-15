@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {WeatherCardData, WeatherStatus} from '../../models/models';
 import {EWeatherStatus} from '../../models/enums';
 
@@ -15,6 +15,8 @@ export class WeatherCardComponent implements OnInit {
     status: new WeatherStatus({id: 700, main: 'test', description: 'yo', icon: ''}),
     location: 'San Fransisco'
   };
+  @Output() delete = new EventEmitter<void>();
+  @Output() update = new EventEmitter<void>();
 
   constructor() { }
 
@@ -22,5 +24,4 @@ export class WeatherCardComponent implements OnInit {
   }
 
   statusClass = () => `gradient-${EWeatherStatus[this.data.status.status].toLowerCase()}`;
-
 }

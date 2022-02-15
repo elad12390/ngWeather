@@ -9,11 +9,16 @@ import {map} from 'rxjs/operators';
 export class OpenWeatherMapApiService {
 
   constructor(private httpClient: HttpClient) {
-    console.log('mewo');
   }
 
   getCityWeather(cityName: string): Observable<WeatherCardData> {
     return this.httpClient.get<ICurrentWeatherDataResponse>('weather', { params: { q: cityName }}).pipe(
+      map(data => new WeatherCardData(data))
+    );
+  }
+
+  getCityWeatherByLatLong(lat: number, lon: number): Observable<WeatherCardData> {
+    return this.httpClient.get<ICurrentWeatherDataResponse>('weather', { params: { lat: lat.toString(), lon: lon.toString() }}).pipe(
       map(data => new WeatherCardData(data))
     );
   }

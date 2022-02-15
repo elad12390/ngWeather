@@ -12,15 +12,15 @@ import {environment} from '../../environments/environment';
 @Injectable()
 export class MockInterceptor implements HttpInterceptor {
   urls = [
-    {
-      url: 'weather',
-      json: () => {
-        const f = Math.floor(Math.random() * (multipleWeather.length - 1));
-        const loc = multipleWeather[f];
-        multipleWeather.splice(f, 1);
-        return loc;
-      }
-    }
+    // {
+    //   url: 'weather',
+    //   json: () => {
+    //     const f = Math.floor(Math.random() * (multipleWeather.length - 1));
+    //     const loc = multipleWeather[f];
+    //     multipleWeather.splice(f, 1);
+    //     return loc;
+    //   }
+    // }
   ];
 
 

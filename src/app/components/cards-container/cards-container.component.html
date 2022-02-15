@@ -1,12 +1,5 @@
 <div class="cards-container">
   <ng-container *ngFor="let card of cards$ | async">
-    <app-weather-card [data]="card"></app-weather-card>
+    <app-weather-card [data]="card" (delete)="deleteCard(card)" (update)="updateCard(card)"></app-weather-card>
   </ng-container>
-<!--  <app-weather-card></app-weather-card>-->
-<!--  <app-weather-card></app-weather-card>-->
-<!--  <app-weather-card></app-weather-card>-->
-<!--  <app-weather-card></app-weather-card>-->
-<!--  <app-weather-card></app-weather-card>-->
-<!--  <app-weather-card></app-weather-card>-->
-<!--  <app-weather-card></app-weather-card>-->
 </div>

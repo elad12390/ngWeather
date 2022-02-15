@@ -6,3 +6,8 @@ export const roundNDigits = (N, num) => {
 };
 
 export const unixSecondsToDate = (seconds: number) => new Date(seconds * 1000);
+
+
+export const getGeolocation = new Promise((resolve, reject) => {
+  navigator.geolocation.getCurrentPosition((loc) => resolve(loc), () => reject());
+});

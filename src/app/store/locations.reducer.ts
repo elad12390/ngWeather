@@ -12,21 +12,21 @@ export const locationsReducer = createReducer(
     }
     return state;
   }),
-  on(findAndAddCity, (state, cityNamePayload) => {
-    return state;
-  }),
   on(deleteCity, (state, idPayload) => {
     const idx = state.findIndex(data => data.id === idPayload.id);
     return [...state.slice(0, idx), ...state.slice(idx + 1, state.length)];
   }),
   on(updateCity, (state, payload) => {
-    const city = state.find(c => c.id === payload.id);
     const {status, degree, date, location} = payload.data;
-    city.date = date;
-    city.degree = degree;
-    city.status = status;
-    city.location = location;
-    return state;
+    return state.map((c: WeatherCardData) => {
+      if (c.id === payload.id) {
+        return {
+          ...c,
+          ...payload
+        };
+      }
+      return c;
+    });
   })
 );
 

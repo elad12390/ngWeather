@@ -2,12 +2,19 @@ $date-size: .8rem;
 $status-size: 1.3rem;
 $degree-size: 4.3rem;
 $location-size: 1.3rem;
+$hover-scale: 1.05;
 //$weather-status-fs: ;
 //
+:host {
+  z-index: 1;
+  &:hover {
+    z-index: 2;
+  }
+}
 
 .container {
   border: 4px solid #FFFFFF;
-  padding: 2rem 2rem 3rem;
+  padding: 2rem 1rem 3rem;
   display: flex;
   flex-direction: row;
   width: 350px;
@@ -16,6 +23,13 @@ $location-size: 1.3rem;
   box-sizing: border-box;
   box-shadow: 2px 4px 17px #B7BBBF;
   border-radius: 32px;
+  transition: all .2s ease-in-out;;
+  transform: scale(1);
+  z-index: 1;
+  &:hover {
+    transform: scale($hover-scale);
+    z-index: 2;
+  }
 }
 
 .weather {
@@ -79,4 +93,11 @@ $location-size: 1.3rem;
     background: linear-gradient(359.28deg, #DAE7F3 0.56%, rgba(201, 201, 201, 0) 18.03%), linear-gradient(0deg, #4B95D9, #4B95D9);
     color: white;
   }
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: start;
 }

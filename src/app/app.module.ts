@@ -23,6 +23,7 @@ import {environment} from '../environments/environment';
 import {locationsReducer} from './store/locations.reducer';
 import {EffectsModule} from '@ngrx/effects';
 import {LocationsEffects} from './store/locations.effects';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import {LocationsEffects} from './store/locations.effects';
     MatAutocompleteModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
