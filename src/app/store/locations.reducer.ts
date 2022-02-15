@@ -1,21 +1,23 @@
 import {createReducer, on} from '@ngrx/store';
-import {addCity, deleteCity, updateCity} from './locations.actions';
+import {addCity, deleteCity, findAndAddCity, updateCity} from './locations.actions';
 import {WeatherCardData} from '../models/models';
 
-export const locationsInitialState = [] as WeatherCardData[];
+export const locationsInitialState: ReadonlyArray<WeatherCardData> = [];
 
-const _locationsReducer = createReducer(
+export const locationsReducer = createReducer(
   locationsInitialState,
   on(addCity, (state, cityPayload) => {
     if (!state.map(c => c.id).includes(cityPayload.id)) {
-      state.push(cityPayload);
+      return [...state, cityPayload];
     }
+    return state;
+  }),
+  on(findAndAddCity, (state, cityNamePayload) => {
     return state;
   }),
   on(deleteCity, (state, idPayload) => {
     const idx = state.findIndex(data => data.id === idPayload.id);
-    state.splice(idx, 1);
-    return state;
+    return [...state.slice(0, idx), ...state.slice(idx + 1, state.length)];
   }),
   on(updateCity, (state, payload) => {
     const city = state.find(c => c.id === payload.id);

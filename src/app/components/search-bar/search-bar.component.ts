@@ -1,11 +1,12 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
-import {debounceTime, map, startWith, tap} from 'rxjs/operators';
+import {debounceTime, map, startWith, take, tap} from 'rxjs/operators';
 import cities from '../../../assets/json/israel_cities.json';
 import {IWeatherAPICity} from '../../models/openweathermap.models';
-import {addCity} from '../../store/locations.actions';
+import {addCity, findAndAddCity} from '../../store/locations.actions';
 import {Store} from '@ngrx/store';
+import {OpenWeatherMapApiService} from '../../services/open-weather-map-api.service';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class SearchBarComponent implements OnInit {
   filteredOptions: Observable<IWeatherAPICity[]>;
 
   constructor(
-
+    private service: OpenWeatherMapApiService,
     private store: Store) {
     this.sortedCities = cities.sort((c1, c2) => c1.name.localeCompare(c2.name));
   }
@@ -41,9 +42,8 @@ export class SearchBarComponent implements OnInit {
   }
 
   onCitySelection(val: IWeatherAPICity): void {
-
-    this.store.dispatch(addCity(val));
-
+    console.log('dispatching', {name: val.name});
+    this.store.dispatch(findAndAddCity({name: val.name}));
 
     // This is for waiting for the next draw.. (because this happens on click and i need to wait for angular to render first)
     setTimeout(() => {

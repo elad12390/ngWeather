@@ -1,1 +1,12 @@
-<app-weather-card></app-weather-card>
+<div class="cards-container">
+  <ng-container *ngFor="let card of cards$ | async">
+    <app-weather-card [data]="card"></app-weather-card>
+  </ng-container>
+<!--  <app-weather-card></app-weather-card>-->
+<!--  <app-weather-card></app-weather-card>-->
+<!--  <app-weather-card></app-weather-card>-->
+<!--  <app-weather-card></app-weather-card>-->
+<!--  <app-weather-card></app-weather-card>-->
+<!--  <app-weather-card></app-weather-card>-->
+<!--  <app-weather-card></app-weather-card>-->
+</div>

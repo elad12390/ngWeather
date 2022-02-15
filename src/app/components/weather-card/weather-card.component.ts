@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {WeatherCardData, WeatherStatus} from '../../models/models';
+import {EWeatherStatus} from '../../models/enums';
 
 @Component({
   selector: 'app-weather-card',
@@ -19,5 +20,7 @@ export class WeatherCardComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  statusClass = () => `gradient-${EWeatherStatus[this.data.status.status].toLowerCase()}`;
 
 }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Store} from '@ngrx/store';
+import {map} from 'rxjs/operators';
+import {ApplicationStore} from '../../store/store';
 
 @Component({
   selector: 'app-cards-container',
@@ -6,9 +9,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cards-container.component.scss']
 })
 export class CardsContainerComponent implements OnInit {
+  cards$ = this.store.select('locations');
 
-  constructor() { }
-
+  constructor(private store: Store<ApplicationStore>) { }
   ngOnInit(): void {
   }
 

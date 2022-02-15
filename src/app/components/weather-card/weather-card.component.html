@@ -1,13 +1,13 @@
-<div class="container">
-  <div class="degree-status-container">
-    <div class="status">{{data.status.emoji}} {{data.status.statusText}}</div>
-    <div class="degree">{{data.degree}}°</div>
-  </div>
-  <div class="datetime-location-container">
-    <div class="datetime">
-      <div class="time">{{data.date | date: 'shortTime' }}</div>
-      <div class="date">{{data.date | date: 'dd/MM'}}</div>
+<div class="container" [ngClass]="statusClass()">
+  <div class="weather">
+    <div class="date">{{data.date | date}}</div>
+    <div class="status-degree">
+      <div class="status">{{data.status.emoji}} {{data.status.statusText}}</div>
+      <div class="degree">{{data.degree}}°</div>
     </div>
-    <div class="location-name">{{data.location}}</div>
+    <div class="location"><mat-icon>location_on</mat-icon>{{data.location}}</div>
+  </div>
+  <div class="action-buttons">
+    <
   </div>
 </div>
